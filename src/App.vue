@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+  	<span>{{xxx}}</span>
+    <InputItem placeholder="that is very good"/>
   </div>
 </template>
 
 <script>
+import InputItem from './components/input';
 
 export default {
   name: 'App',
+  data() {
+  	return {
+  		'xxx': "1231313",
+  	}
+  },
   components: {
-    HelloWorld
+    InputItem
   }
 }
 </script>
