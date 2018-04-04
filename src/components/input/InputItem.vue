@@ -125,7 +125,6 @@
                 this.$emit('on-change', e);
             },
             setCurrentValue(val) {
-            	console.log(this.currentValue);
             	this.currentValue = val;
             }
 		}

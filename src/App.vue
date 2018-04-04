@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  	<span>{{xxx}}</span>
+    <Chart :config="config"></Chart>
     <InputItem placeholder="that is very good" label="测试"/>
     <InputItem placeholder="that is very good" label="测试测试测试"/>
   </div>
@@ -8,16 +8,22 @@
 
 <script>
 import InputItem from './components/input';
+import Chart from './components/chart';
 
 export default {
   name: 'App',
   data() {
   	return {
-  		'xxx': "1231313",
+  		config: {
+        type: 'interval',
+        position: 'genre*sold',
+        color: 'genre'
+      }
   	}
   },
   components: {
-    InputItem
+    InputItem,
+    Chart
   }
 }
 </script>
