@@ -3,11 +3,16 @@
     <Chart :config="config"></Chart>
     <InputItem placeholder="that is very good" label="测试"/>
     <InputItem placeholder="that is very good" label="测试测试测试"/>
+    <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
+    <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
+    <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
+    <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
   </div>
 </template>
 
 <script>
 import InputItem from './components/input';
+import SelectItem from './components/select';
 import Chart from './components/chart';
 
 export default {
@@ -18,11 +23,13 @@ export default {
         type: 'interval',
         position: 'genre*sold',
         color: 'genre'
-      }
+      },
+      options: [{name:'A', value: 'A'},{name:'B', value: 'B'},{name:'C', value: 'C'},{name:'D', value: 'D'}]
   	}
   },
   components: {
     InputItem,
+    SelectItem,
     Chart
   }
 }
