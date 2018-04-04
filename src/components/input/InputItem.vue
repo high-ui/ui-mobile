@@ -1,37 +1,47 @@
 <template>
-	<div :class="wrapClasses">
-		<i :class="iconClasses" v-if="clearable" @click="handleClear"></i>
-		<input 
-			ref="input" 
-			:class="inputClasses"
-			:type="type"
-			:placeholder="placeholder"
-			:disabled="disabled"
-			:maxlength="maxlength"
-			:readonly="readonly"
-			:autofocus="autofocus"
-			:value="currentValue"
-			@input="handleInput"
-			/>
+	<div :class="inputClasses">
+		<span :class="labelClasses" :style="labelStyles">{{label}}</span>
+		<div :class="wrapClasses">
+			<i :class="iconClasses" v-if="clearable" @click="handleClear"></i>
+			<input 
+				ref="input"
+				:label="label"
+				:type="type"
+				:placeholder="placeholder"
+				:disabled="disabled"
+				:maxlength="maxlength"
+				:readonly="readonly"
+				:autofocus="autofocus"
+				:value="currentValue"
+				@input="handleInput"
+				/>
+		</div>
 	</div>
 </template>
 <script>
 	const cssPrefix = 'ui';
-	const prefixCls = `${cssPrefix}-input`;
+	const rowPrefix = 'ui-row'
+	const prefixCls = 'ui-input';
 
 	export default {
 		name: 'InputItem',
 		data() {
 			return {
 				currentValue: this.value,
-				prefixCls: prefixCls,
-				prepend: true
+				prefixCls: prefixCls
 			}
 		},
 		props: {
 			value: {
 				type: [String, Number],
 				default: ''
+			},
+			label:{
+				type: String,
+				default: ''
+			},
+			type: {
+				type: String
 			},
 			clearable: {
 				type: Boolean,
@@ -58,26 +68,41 @@
 			}
 		},
 		computed: {
-			wrapClasses() {
-				return [
-					`${prefixCls}-wrapper`
-				];
-			},
+
 
 			inputClasses() {
 				return [
-					`${prefixCls}`,
+					`${rowPrefix}`,
+					`${prefixCls}`
+				];
+			},
+
+			wrapClasses() {
+				return [
+					`${prefixCls}-wrapper`,
 					{
 						[`${prefixCls}-disabled`]: this.disabled
 					}
 				];
 			},
 
+			labelClasses() {
+				return `${prefixCls}-label`;
+			},
+
+			labelStyles() {
+				if (this.label.length > 4) {
+					return {
+						'line-height': '17px'
+					}
+				}
+			},
+
 			iconClasses() {
 				return [
 					`${cssPrefix}-icon`,
 					{
-						[`${prefixCls}-icon-clear`]: this.clearable
+						[`${prefixCls}-icon-clear`]: this.clearable && this.currentValue
 					}
 				];
 			}
@@ -90,6 +115,7 @@
 				}
 
 				this.$emit('input', value);
+				this.setCurrentValue(value);
 				this.$emit('on-change', event);
 			},
             handleClear () {
@@ -97,15 +123,23 @@
                 this.$emit('input', '');
                 this.setCurrentValue('');
                 this.$emit('on-change', e);
+            },
+            setCurrentValue(val) {
+            	console.log(this.currentValue);
+            	this.currentValue = val;
             }
 		}
 	}
 </script>
 <style lang="less">
-	@css-prefix: "ui";
+	@import "../../style/themes/default.less";
+	@row-prefix-cls: ~"@{css-prefix}-row";
 	@input-prefix-cls: ~"@{css-prefix}-input";
 	@icon-cls: ~"@{css-prefix}-icon";
 
+	.@{row-prefix-cls} {
+		margin-bottom: @v-spacing-sm;
+	}
 	.@{icon-cls} {
     	width: 16px;
     	height: 16px;
@@ -114,36 +148,46 @@
     	position: absolute;
     	top: 8px;
     	right: 4px;
-    	background-color: #ddd;
+    	background-color: @color-icon-base;
     	background-image: url(../../assets/clear.svg);
 
     	&:hover{
-    		background-color: #108ee9;
+    		background-color: @tag-color;
     	}
 	}
 
 	.@{input-prefix-cls} {
-		caret-color:#108ee9;
-		appearance: none;
-		width: 100%;
-		height: 32px;
-		line-height: 32px;
-		padding: 2px 0;
-		border: 0;
-		background-color: transparent;
-		box-sizing: border-box;
-		outline: none;
+		background-color: @fill-base;
+		height: @list-item-height-sm;
+		line-height: @list-item-height-sm;
+		font-size: @font-size-base;
 
-		&-wrapper {
-			display: inline-block;
-			width: 100%;
+		&-wrapper {	
+			margin-left: 76 * @hd;
+			margin-right: 6px;
 			position: relative;
 			vertical-align: middle;
-			line-height: normal;
 		}
 
 		&-wrapper:hover &-icon-clear {
 			display: inline-block;
+		}
+
+		&-label {
+			width: @input-label-width * 4;
+			float: left;
+			text-align: right;
+		}
+
+		input {
+    		caret-color:@tag-color;
+			appearance: none;
+			width: 100%;
+			border: 0;
+			background-color: transparent;
+			height: 32px;
+			line-height: 32px;
+			outline: none;
 		}
 	}
 </style>

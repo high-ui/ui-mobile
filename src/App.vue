@@ -1,7 +1,8 @@
 <template>
   <div id="app">
   	<span>{{xxx}}</span>
-    <InputItem placeholder="that is very good"/>
+    <InputItem placeholder="that is very good" label="测试"/>
+    <InputItem placeholder="that is very good" label="测试测试测试"/>
   </div>
 </template>
 
@@ -21,13 +22,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@import "./style/themes/default.less";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: @fill-body;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: @fill-body;
 }
 </style>
