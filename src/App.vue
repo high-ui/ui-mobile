@@ -1,14 +1,37 @@
 <template>
     <div id="app">
-        <Chart :config="config"></Chart>
+        <Tabs>
+            <TabPane label="饼图">
+                <Chart :config="config"></Chart>
+            </TabPane>
+            <TabPane label="饼图">
+                <Chart :config="config"></Chart>
+            </TabPane>
+            <TabPane label="饼图">
+                <Chart :config="config"></Chart>
+            </TabPane>
+        </Tabs>
         <InputItem placeholder="that is very good" label="测试"/>
         <Group>
             <InputItem placeholder="that is very good" label="测试测试测试"/>
             <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
             <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
         </Group>
-        <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
-        <SelectItem placeholder="that is very good" label="测试" :options="options"></SelectItem>
+        <Tabs>
+            <TabPane label="aaaaa">
+                <SelectItem placeholder="that is very good" label="测试1" :options="options"></SelectItem>
+            </TabPane>
+            <TabPane label="bbbbb">
+                <SelectItem placeholder="that is very good" label="测试2" :options="options"></SelectItem>
+            </TabPane>
+            <TabPane label="cccc">
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+            </TabPane>
+            <TabPane label="cccc">
+                <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+            </TabPane>
+        </Tabs>
     </div>
 </template>
 
@@ -17,6 +40,7 @@ import InputItem from './components/input';
 import SelectItem from './components/select';
 import Group from './components/group';
 import Chart from './components/chart';
+import Tabs from './components/tabs';
 
 export default {
     name: 'App',
@@ -45,6 +69,8 @@ export default {
     components: {
         InputItem,
         SelectItem,
+        Tabs,
+        TabPane: Tabs.Pane,
         Group,
         Chart
     }
