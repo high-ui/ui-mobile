@@ -1,5 +1,8 @@
 <template>
     <div id="app">
+        <Popup v-model="a">
+            <div>AAA</div>
+        </Popup>
         <Tabs>
             <TabPane label="饼图">
                 <Chart :config="config"></Chart>
@@ -30,6 +33,14 @@
             <TabPane label="cccc">
                 <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
                 <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试4" :options="options"></SelectItem>
+                <SelectItem placeholder="that is very good" label="测试3" :options="options"></SelectItem>
             </TabPane>
         </Tabs>
     </div>
@@ -41,11 +52,13 @@ import SelectItem from './components/select';
 import Group from './components/group';
 import Chart from './components/chart';
 import Tabs from './components/tabs';
+import Popup from './components/popup';
 
 export default {
     name: 'App',
     data() {
         return {
+            a: true,
             config: {
                 type: 'interval',
                 position: 'genre*sold',
@@ -67,6 +80,7 @@ export default {
         }
     },
     components: {
+        Popup,
         InputItem,
         SelectItem,
         Tabs,
