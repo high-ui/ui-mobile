@@ -148,7 +148,6 @@
     	top: 8px;
     	right: 4px;
     	background-color: @color-icon-base;
-    	background-image: url(../../assets/clear.svg);
 
     	&:hover{
     		background-color: @tag-color;
@@ -168,6 +167,10 @@
 			vertical-align: middle;
 		}
 
+		&-icon-clear {
+			background-image: url(../../assets/clear.svg);
+		}
+		
 		&-wrapper:hover &-icon-clear {
 			display: inline-block;
 		}

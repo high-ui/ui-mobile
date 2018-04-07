@@ -1,20 +1,9 @@
 <template>
     <div id="app">
-    	<picker :data='year6' v-model='year1' @on-change='change'></picker>
-        <div>{{year7Value}}</div>
-        <picker :data='year7' :fixed-columns="2" :columns=3 v-model='year7Value' @on-change='change' ref="picker1"></picker>
-        <Picker :data="years" v-model='year1'>
-            
-        </Picker>
-        <Picker :data="years" v-model='year1'>
-            
-        </Picker>
-        <Popup v-model="a">
-        	<PopupHeader title="测试" left-text="取消" right-text="确定" @on-click-left="hide">
-        		
-        	</PopupHeader>
-            <div>AAA</div>
-        </Popup>
+    	<DatetimeItem label="日期选择" placeholder="选择日期" v-model="ss" format="YYYY-MM-DD HH:mm">
+    		
+    	</DatetimeItem>
+    	<InputItem placeholder="that is very good" label="测试测试测试"/>
         <Tabs>
             <TabPane label="饼图">
                 <Chart :config="config"></Chart>
@@ -67,6 +56,7 @@ import Tabs from './components/tabs';
 import Popup from './components/popup';
 import PopupHeader from './components/popup-header';
 import Picker from './components/picker';
+import DatetimeItem from './components/datetime'
 
 let years = []
 for (var i = 2000; i <= 2030; i++) {
@@ -80,9 +70,10 @@ export default {
     name: 'App',
     data() {
         return {
+        	ss: '2017-09-02',
 			years: [years],
 			year1: [''],
-			a: false,
+			a: true,
 			config: {
 				type: 'interval',
 				position: 'genre*sold',
@@ -178,7 +169,8 @@ export default {
         Group,
         Chart,
         PopupHeader,
-        Picker
+        Picker,
+        DatetimeItem
     },
     methods: {
     	hide() {
