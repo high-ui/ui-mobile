@@ -1,5 +1,8 @@
 <template>
     <div id="app">
+        <Picker :data="years" v-model='year1'>
+            
+        </Picker>
         <Popup v-model="a">
         	<PopupHeader title="测试" left-text="取消" right-text="确定" @on-click-left="hide">
         		
@@ -57,12 +60,23 @@ import Chart from './components/chart';
 import Tabs from './components/tabs';
 import Popup from './components/popup';
 import PopupHeader from './components/popup-header';
+import Picker from './components/picker';
+
+let years = []
+for (var i = 2000; i <= 2030; i++) {
+  years.push({
+    name: i + '年',
+    value: i + ''
+  })
+}
 
 export default {
     name: 'App',
     data() {
         return {
-            a: true,
+            years: [years],
+            year1: [''],
+            a: false,
             config: {
                 type: 'interval',
                 position: 'genre*sold',
@@ -91,7 +105,8 @@ export default {
         TabPane: Tabs.Pane,
         Group,
         Chart,
-        PopupHeader
+        PopupHeader,
+        Picker
     },
     methods: {
     	hide() {
