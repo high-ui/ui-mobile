@@ -1,5 +1,11 @@
 <template>
     <div id="app">
+    	<picker :data='year6' v-model='year1' @on-change='change'></picker>
+        <div>{{year7Value}}</div>
+        <picker :data='year7' :fixed-columns="2" :columns=3 v-model='year7Value' @on-change='change' ref="picker1"></picker>
+        <Picker :data="years" v-model='year1'>
+            
+        </Picker>
         <Picker :data="years" v-model='year1'>
             
         </Picker>
@@ -74,28 +80,94 @@ export default {
     name: 'App',
     data() {
         return {
-            years: [years],
-            year1: [''],
-            a: false,
-            config: {
-                type: 'interval',
-                position: 'genre*sold',
-                color: 'genre'
-            },
-            options: [{
-                name: 'A',
-                value: 'A'
-            }, {
-                name: 'B',
-                value: 'B'
-            }, {
-                name: 'C',
-                value: 'C'
-            }, {
-                name: 'D',
-                value: 'D'
-            }]
-        }
+			years: [years],
+			year1: [''],
+			a: false,
+			config: {
+				type: 'interval',
+				position: 'genre*sold',
+				color: 'genre'
+			},
+			options: [{
+				name: 'A',
+				value: 'A'
+			}, {
+				name: 'B',
+				value: 'B'
+			}, {
+				name: 'C',
+				value: 'C'
+			}, {
+				name: 'D',
+				value: 'D'
+			}],
+			year7: [{
+				name: '中国',
+				value: 'china',
+				parent: 0
+			}, {
+				name: '美国',
+				value: 'USA',
+				parent: 0
+			}, {
+				name: '广东',
+				value: 'china001',
+				parent: 'china'
+			}, {
+				name: '广西',
+				value: 'china002',
+				parent: 'china'
+			}, {
+				name: '美国001',
+				value: 'usa001',
+				parent: 'USA'
+			}, {
+				name: '美国002',
+				value: 'usa002',
+				parent: 'USA'
+			}, {
+				name: '广州',
+				value: 'gz',
+				parent: 'china001'
+			}, {
+				name: '深圳',
+				value: 'sz',
+				parent: 'china001'
+			}, {
+				name: '广西001',
+				value: 'gz',
+				parent: 'china002'
+			}, {
+				name: '广西002',
+				value: 'sz',
+				parent: 'china002'
+			}, {
+				name: '美国001_001',
+				value: '0003',
+				parent: 'usa001'
+			}, {
+				name: '美国001_002',
+				value: '0004',
+				parent: 'usa001'
+			}, {
+				name: '美国002_001',
+				value: '0005',
+				parent: 'usa002'
+			}, {
+				name: '美国002_002',
+				value: '0006',
+				parent: 'usa002'
+			}],
+			year7Value: [],
+			year8Value: [],
+			year6: [
+				['你', '我', '他'],
+				['you', 'I', 'him'],
+				['ni', 'wo', 'ta'],
+				[1, 2, 3, 4, 5],
+				[5, 4, 3, 2, 1]
+			]
+		}
     },
     components: {
         Popup,
@@ -111,7 +183,11 @@ export default {
     methods: {
     	hide() {
     		this.a = false;
-    	}
+    	},
+
+    	change (value) {
+      		console.log('new Value', value)
+    	},
     }
 }
 </script>
