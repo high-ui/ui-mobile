@@ -68,8 +68,6 @@
 			}
 		},
 		computed: {
-
-
 			inputClasses() {
 				return [
 					`${rowPrefix}`,

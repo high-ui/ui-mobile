@@ -1,5 +1,12 @@
 <template>
     <div id="app">
+    	<switch-item label="选择"  v-model="test">
+    		
+    	</switch-item>
+
+    	<SwitchItem label="选择">
+    		
+    	</SwitchItem>
     	<DatetimeItem label="日期选择" placeholder="选择日期" v-model="ss" format="YYYY-MM-DD HH:mm">
     		
     	</DatetimeItem>
@@ -56,7 +63,8 @@ import Tabs from './components/tabs';
 import Popup from './components/popup';
 import PopupHeader from './components/popup-header';
 import Picker from './components/picker';
-import DatetimeItem from './components/datetime'
+import DatetimeItem from './components/datetime';
+import SwitchItem from './components/switch';
 
 let years = []
 for (var i = 2000; i <= 2030; i++) {
@@ -71,6 +79,7 @@ export default {
     data() {
         return {
         	ss: '2017-09-02',
+        	test: true,
 			years: [years],
 			year1: [''],
 			a: true,
@@ -170,7 +179,8 @@ export default {
         Chart,
         PopupHeader,
         Picker,
-        DatetimeItem
+        DatetimeItem,
+        SwitchItem
     },
     methods: {
     	hide() {
