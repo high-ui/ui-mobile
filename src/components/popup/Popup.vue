@@ -28,7 +28,6 @@
 			},
 			show(val) {
 				this.$emit('input', val);
-					console.log('hide');
 				if (val) {
 					this.popup && this.popup.show();
 				} else {

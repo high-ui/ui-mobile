@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <Popup v-model="a">
+        	<PopupHeader title="测试" left-text="取消" right-text="确定" @on-click-left="hide">
+        		
+        	</PopupHeader>
             <div>AAA</div>
         </Popup>
         <Tabs>
@@ -53,6 +56,7 @@ import Group from './components/group';
 import Chart from './components/chart';
 import Tabs from './components/tabs';
 import Popup from './components/popup';
+import PopupHeader from './components/popup-header';
 
 export default {
     name: 'App',
@@ -86,7 +90,13 @@ export default {
         Tabs,
         TabPane: Tabs.Pane,
         Group,
-        Chart
+        Chart,
+        PopupHeader
+    },
+    methods: {
+    	hide() {
+    		this.a = false;
+    	}
     }
 }
 </script>
